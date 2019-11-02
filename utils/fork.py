@@ -1,6 +1,5 @@
 import requests
 import settings
-import json
 
 
 def getReponseForIngredients(ingredients):
