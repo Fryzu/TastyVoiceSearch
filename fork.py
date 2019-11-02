@@ -4,6 +4,9 @@ import json
 
 
 def getReponseForIngredients(ingredients):
+    '''Gets response from food2fork for ingredients list 
+    and saves the result in response.json'''
+
     url = "https://www.food2fork.com/api/search"
 
     searchQuery = ",".join(ingredients)
