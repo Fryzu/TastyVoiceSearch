@@ -1,14 +1,17 @@
 import requests
+import settings
+import json
 
-url = "https://tasty.p.rapidapi.com/recipes/auto-complete"
+url = "https://www.food2fork.com/api/search"
 
-querystring = {"prefix": "apple"}
+searchQuery = "chicken"
 
-headers = {
-    'x-rapidapi-host': "tasty.p.rapidapi.com",
-    'x-rapidapi-key': "SIGN-UP-FOR-KEY"
+params = {
+    "key": settings.FOOD_FOR_FORK,
+    "q": searchQuery
 }
 
-response = requests.request("GET", url, headers=headers, params=querystring)
+response = requests.request("GET", url, params=params)
 
-print(response.text)
+with open('response.json', 'w') as outfile:
+    outfile.write(response.text)
