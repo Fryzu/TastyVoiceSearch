@@ -1,8 +1,6 @@
 import time
-
 import speech_recognition as sr
-
-from TastyVoiceSearch.utils import recognize_speech
+from utils import recognize_speech
 
 
 def get_ingredients():
@@ -15,7 +13,8 @@ def get_ingredients():
     print('Get ready!')
     time.sleep(1)
     while 1:
-        input_text = recognize_speech.recognize_speech_from_mic(recognizer, microphone, start_phrase, phrase_time_limit)
+        input_text = recognize_speech.recognize_speech_from_mic(
+            recognizer, microphone, start_phrase, phrase_time_limit)
         if not input_text["success"]:
             break
         if input_text["error"]:
