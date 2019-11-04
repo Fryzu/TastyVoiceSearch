@@ -1,31 +1,30 @@
 function renderList(jsonData) {
-  print(jsonData);
+  console.log(jsonData[0]);
 
   var listDiv1 = document.getElementById("recipes-list1");
   var listDiv2 = document.getElementById("recipes-list2");
 
-  for (var i = 0; i < 9; ++i) {
+  for (var i = 0; i < jsonData.length; ++i) {
+    recipe = jsonData[i];
+
     // CardBody content
     var title = document.createElement("h5");
     title.setAttribute("class", "card-title");
-    title.innerHTML = "Title";
+    title.innerHTML = recipe.title;
 
     var text = document.createElement("p");
     text.setAttribute("class", "card-text");
-    text.innerHTML = "text";
+    text.innerHTML = recipe.publisher;
 
     var link = document.createElement("a");
     link.setAttribute("class", "btn btn-primary");
-    link.setAttribute("href", "#");
-    link.innerHTML = "Check out";
+    link.setAttribute("href", recipe.f2f_url);
+    link.innerHTML = "Read more!";
 
     // Card content
     var image = document.createElement("img");
     image.setAttribute("class", "card-img-top");
-    image.setAttribute(
-      "src",
-      "https://www.thesprucepets.com/thmb/daHAnhowPummm2Uqe1O5drHsp-8=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/golden-retriever-sitting-down-in-a-farm-837898820-5c7854ff46e0fb00011bf29a.jpg"
-    );
+    image.setAttribute("src", recipe.image_url);
 
     var cardBody = document.createElement("div");
     cardBody.setAttribute("class", "card-body");
@@ -49,5 +48,5 @@ function renderList(jsonData) {
 }
 
 $.getJSON("http:localhost:8080", function(data) {
-  console.log(data);
+  renderList(data);
 });
