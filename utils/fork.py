@@ -4,7 +4,7 @@ import settings
 
 def getReponseForIngredients(ingredients):
     '''Gets response from food2fork for ingredients list 
-    and saves the result in response.json'''
+    and returns and saves the result in response.json'''
 
     url = "https://www.food2fork.com/api/search"
 
@@ -21,8 +21,10 @@ def getReponseForIngredients(ingredients):
 
     print("Response finished with code", response.status_code)
 
-    with open('response.json', 'w') as outfile:
+    with open('output/response.json', 'w') as outfile:
         outfile.write(response.text)
+
+    return response.text
 
 
 if __name__ == '__main__':

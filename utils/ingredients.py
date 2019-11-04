@@ -2,11 +2,13 @@ import time
 import speech_recognition as sr
 from utils import recognize_speech
 
+DEVICE_INDEX = 0
+
 
 def get_ingredients():
     device_index = len(sr.Microphone.list_microphone_names()) - 1
     recognizer = sr.Recognizer()
-    microphone = sr.Microphone(device_index=device_index)
+    microphone = sr.Microphone(device_index=DEVICE_INDEX)
     start_phrase = "Please input ingredients: "
     phrase_time_limit = 5
     ingredients = []
